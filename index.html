@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>website</title>
+    <style>
+        * {
+            padding: 0%;
+            margin: 0%;
+            box-sizing: border-box;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #205300;
+            color: white;
+            padding: 10px 20px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .manue {
+            display: flex;
+            gap: 20px;
+        }
+
+        .manue-item {
+            position: relative;
+        }
+
+        .manue .manue-item a {
+            padding: 15px;
+        }
+
+        .manue-item .main-link:hover {
+            background-color: #ffb300;
+            padding: 15px;
+        }
+
+        .dropdown,
+        .sub-dropdown {
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+            position: absolute;
+            top: 33px;
+            left: 0;
+            background-color: #0004ff;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            z-index: 100;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .sub-dropdown {
+            left: 100%;
+        }
+
+        .dropdown-subitem {
+            background-color: #205300;
+        }
+
+        .dropdown-subitem a {
+            padding: 10px 15px;
+            white-space: nowrap;
+            /* ✅ Prevent text wrapping */
+            display: block;
+            /* ✅ Ensures it takes full width for hover/click */
+        }
+
+        .dropdown-subitem a:hover {
+            background-color: #ffb300;
+        }
+
+
+        .manue-item:hover>.dropdown {
+            display: flex;
+            transition: all 0.5s ease-in-out;
+            opacity: 1;
+            transform: translateY(0px);
+            pointer-events: auto;
+            transition-delay: 0.1s;
+        }
+
+        .dropdown-subitem:hover>.sub-dropdown {
+            display: flex;
+            left: 100%;
+            top: 20px;
+            transition: all 0.5s ease-in-out;
+            opacity: 1;
+            transform: translateY(0px);
+            pointer-events: auto;
+            transition-delay: 0.1s;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+        .btn button {
+            padding: 8px 16px;
+            cursor: pointer;
+            background-color: #ffb300;
+            border: none;
+            color: rgb(255, 255, 255);
+            border-radius: 5px;
+            font-size: 15px;
+            text-transform: uppercase;
+        }
+
+        .popup {
+            display: none;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.5);
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            transition: transform 0.10s ease-in-out;
+            transition-delay: 0.1s;
+        }
+
+        .popup-content::after {
+            transform: translateY(10px);
+            transition: all 0.10s ease-in-out;
+        }
+
+        .popup-content:hover {
+            transform: scale(1.05);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .sub-contain {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .popup-content input {
+            padding: 8px;
+            border-radius: 10px;
+        }
+
+        .popup-content button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ffb300;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .btn button:hover {
+            transform: scale(1.10);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .sub-contain button:hover {
+            transform: scale(1.05);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        h3 {
+            color: #205300;
+            text-transform: uppercase;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 50px;
+                padding: 0%;
+            }
+
+            .manue {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .button-area {
+                align-self: flex-end;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">logo</div>
+        <div class="manue">
+            <div class="manue-item">
+                <a class="main-link" href="">Home</a>
+                <div class="dropdown">
+                    <div class="dropdown-subitem">
+                        <a href="">Link 1</a>
+                        <div class="sub-dropdown">
+                            <div class="dropdown-subitem"><a href="">Link 1</a></div>
+                            <div class="dropdown-subitem"><a href="">Link 2</a></div>
+                            <div class="dropdown-subitem"><a href="">Link 3</a></div>
+                        </div>
+                    </div>
+                    <div class="dropdown-subitem"><a href="">Link 2</a></div>
+                    <div class="dropdown-subitem"><a href="">Link 3</a></div>
+                </div>
+            </div>
+            <div class="manue-item">
+                <a class="main-link" href="">service</a>
+                <div class="dropdown">
+                    <div class="dropdown-subitem">
+                        <a href="">Link 1</a>
+                        <div class="sub-dropdown">
+                            <div class="dropdown-subitem"><a href="">Link 1</a></div>
+                            <div class="dropdown-subitem"><a href="">Link 2</a></div>
+                            <div class="dropdown-subitem"><a href="">Link 3</a></div>
+                        </div>
+                    </div>
+                    <div class="dropdown-subitem"><a href="">Link 2</a></div>
+                    <div class="dropdown-subitem"><a href="">Link 3</a></div>
+                </div>
+            </div>
+            <div class="manue-item"><a class="main-link" href="">contact</a></div>
+        </div>
+        <div class="btn">
+            <button onclick="openPopup()">click me</button>
+        </div>
+    </nav>
+
+    <!-- popup form -->
+    <div class="popup" id="popupform">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <div class="sub-contain">
+                <h3>Form</h3>
+                <input type="text" placeholder="Name" />
+                <input type="number" placeholder="Age" />
+                <input type="password" placeholder="Password" />
+                <button class="btn">Submit</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function openPopup() {
+            document.getElementById('popupform').style.display = "flex";
+        }
+        function closePopup() {
+            document.getElementById('popupform').style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
