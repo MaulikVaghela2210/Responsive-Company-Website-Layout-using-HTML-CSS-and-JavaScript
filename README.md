@@ -24,14 +24,9 @@ This layout was developed for a real company task, showcasing how frontend devel
 - **CSS3**  
 - **JavaScript (Vanilla)**  
 
-## 📸 Preview
-
-Add your screenshots or demo video here (optional)
-
 ## 🔗 Live Demo
 
-[Click here to view the live demo](#)  
-*(Replace # with your live site link if hosted on GitHub Pages or elsewhere)*
+https://maulikvaghela2210.github.io/Responsive-Company-Website-Layout-using-HTML-CSS-and-JavaScript/
 
 ## 📂 How to Use
 
